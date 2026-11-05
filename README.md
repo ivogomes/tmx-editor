@@ -1,19 +1,20 @@
 # TMX Editor
 
-A browser-based editor for TMX (Translation Memory eXchange) files. Open a file, review and fix its segments in a table, and export the result. It runs entirely in the browser. The file is read and written locally and is never uploaded. Served at `/tools/tmx-editor/`.
+A browser-based editor for TMX (Translation Memory eXchange) files. Open a file, review and fix its segments in a table, and export the result. It runs entirely in the browser. The file is read and written locally and is never uploaded. Served at `/tools/tmx-editor/` on ivogomes.com (the site's deploy checks out this repo); it also runs on its own from any static server, with its styles copied into `shared/` from the site.
 
 | File | What it is |
 | --- | --- |
 | `index.html` | Page shell: header, empty state, table, and the dialogs and side panel. |
 | `app.js` | All the app logic. Plain JavaScript, no build step and no dependencies. |
-| `styles.css` | The tool's styles, built on the site tokens (`/src/tokens.css`, `/src/tools.css`). |
+| `shared/` | The shared tool styles, copied from the site (`src/tokens.css`, `src/tools.css`, `src/tools-look.css`). |
+| `styles.css` | The tool's styles, built on the shared tokens in `shared/`. |
 
 ## Run it
 
-The page loads `/src/tokens.css` and `/src/tools.css` from the site root, so serve the repo root rather than opening the file directly:
+Serve this folder with any static web server, or with the site (cloned into its `tools/tmx-editor/`):
 
 ```bash
-npm run preview        # from the repo root, serves at http://localhost:4000
+npm run preview        # from the site's root, serves at http://localhost:4000
 # then open http://localhost:4000/tools/tmx-editor/
 ```
 
